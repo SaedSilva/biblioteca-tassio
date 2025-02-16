@@ -3,5 +3,8 @@ from cli.auth import Auth
 
 class CommandLine:
     def start(self):
-        login = Auth()
-        login.login()
+        auth = Auth()
+        while not auth.logged:
+            auth.start()
+
+        print("Você está logado!")

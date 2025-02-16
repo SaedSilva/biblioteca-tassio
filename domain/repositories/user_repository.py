@@ -3,7 +3,7 @@ from domain.repositories.sqlite_helper import SQLiteHelper
 
 
 class UserRepository:
-    def __init__(self, sqlite_helper: SQLiteHelper):
+    def __init__(self, sqlite_helper: SQLiteHelper = SQLiteHelper()):
         self.sqlite_helper = sqlite_helper
         self.create_table()
 
@@ -47,5 +47,10 @@ class UserRepository:
 
     def find_by_id(self, id: int) -> User:
         cursor = self.sqlite_helper.conn.execute('SELECT * FROM users WHERE id = ?', (id,))
+        row = cursor.fetchone()
+        return User(row[0], row[1], row[2], row[3]) if row else None
+
+    def find_by_username(self, username: str) -> User:
+        cursor = self.sqlite_helper.conn.execute('SELECT * FROM users WHERE username = ?', (username,))
         row = cursor.fetchone()
         return User(row[0], row[1], row[2], row[3]) if row else None
