@@ -1,2 +1,5 @@
+from cli.command_line import CommandLine
+
 if __name__ == '__main__':
-    print('Hello, World!')
+    command = CommandLine()
+    command.start()
