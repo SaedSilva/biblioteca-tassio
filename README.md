@@ -12,11 +12,13 @@ Cada grupo deverá propor um caso real ou fictício para o desenvolvimento do so
 O sistema deve ser desenvolvido em Python e conter:
 
 - [ ] Cadastro de dados (por exemplo, clientes, produtos, alunos, funcionários).
-- [ ] Movimentação ou atualização associada ao cadastro (exemplo:pagamentos, vendas, notas, consultas).
+- [ ] Movimentação ou atualização associada ao cadastro (exemplo: pagamentos, vendas, notas, consultas).
 - [ ] Menu interativo para acessar as opções do sistema.
 - [ ] Geração de um gráfico utilizando Matplotlib, apresentando estatísticas sobre os dados cadastrados.
 - [ ] Código organizado e modularizado (separação em funções).
+
 ##### Bônus (Opcional)
+
 - [x] Criar um sistema de login simples para acesso ao sistema.
 - [x] Permitir armazenamento dos dados em arquivo.
 
