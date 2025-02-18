@@ -3,7 +3,7 @@ from domain.entities.employee import Employee
 from domain.repositories.sqlite_helper import SQLiteHelper
 
 
-class EmployeeRepository:
+class CustomerRepository:
     def __init__(self, sqlite_helper: SQLiteHelper = SQLiteHelper()):
         self.sqlite_helper = sqlite_helper
         self.create_table()
@@ -16,10 +16,10 @@ class EmployeeRepository:
             );
         ''')
 
-    def insert(self, entity: Employee):
+    def insert(self, entity: Customer):
         self.sqlite_helper.conn.execute(
             'INSERT INTO customers (cpf, name) VALUES (?, ?)',
-            (entity.name, entity.username, entity.password)
+            (entity.cpf, entity.name)
         )
         self.sqlite_helper.conn.commit()
 
@@ -43,13 +43,3 @@ class EmployeeRepository:
         for row in cursor:
             entities.append(Customer(row[0], row[1]))
         return entities
-
-    def find_by_id(self, id: int) -> Customer:
-        cursor = self.sqlite_helper.conn.execute('SELECT * FROM employees WHERE id = ?', (id,))
-        row = cursor.fetchone()
-        return Customer(row[0], row[1]) if row else None
-
-    def find_by_username(self, username: str) -> Customer:
-        cursor = self.sqlite_helper.conn.execute('SELECT * FROM employees WHERE username = ?', (username,))
-        row = cursor.fetchone()
-        return Customer(row[0], row[1]) if row else None

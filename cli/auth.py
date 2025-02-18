@@ -2,8 +2,8 @@ from domain.services.auth_service import AuthService
 
 
 class Auth:
-    def __init__(self):
-        pass
+    def __init__(self, auth_service: AuthService = AuthService()):
+        self.auth_service = auth_service
 
     def start(self) -> bool:
         while True:
@@ -18,18 +18,16 @@ class Auth:
                 print("Opção inválida! Tente novamente.")
 
     def login(self) -> bool:
-        auth_service = AuthService()
         while True:
             usuario = input("Digite seu usuário: \n")
             senha = input("Digite sua senha: \n")
-            if auth_service.authenticate(usuario, senha):
+            if self.auth_service.authenticate(usuario, senha):
                 print("Logado com sucesso!")
                 return True
             else:
                 print("Usuário ou senha inválidos!")
 
     def signup(self) -> bool:
-        login_service = AuthService()
         print("Faça seu cadastro!")
         while True:
             nome = input("Digite seu nome: \n")
@@ -44,7 +42,7 @@ class Auth:
             if len(senha) < 6:
                 print("Senha precisa ter ao menos 6 caracteres!")
                 continue
-            if login_service.signup(nome, usuario, senha):
+            if self.auth_service.signup(nome, usuario, senha):
                 print("Cadastro realizado com sucesso!")
                 return True
             else:
