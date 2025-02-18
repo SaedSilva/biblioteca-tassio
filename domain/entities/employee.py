@@ -1,4 +1,4 @@
-class User:
+class Employee:
     def __init__(self, id: int, name: str, username: str, password: str):
         self.id = id
         self.name = name

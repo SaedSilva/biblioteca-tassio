@@ -3,17 +3,19 @@ from domain.services.auth_service import AuthService
 
 class Auth:
     def __init__(self):
-        self.logged = False
+        pass
 
     def start(self) -> bool:
-        opcao = input("Digite 1 para login e 2 para cadastro: \n")
-        if opcao == "1":
-            return self.login()
-        elif opcao == "2":
-            return self.signup()
-        else:
-            print("Opção inválida!")
-            return False
+        while True:
+            print("1 - Entrar / Login")
+            print("2 - Sair")
+            opcao = input()
+            if opcao == "1":
+                return self.login()
+            elif opcao == "2":
+                return False
+            else:
+                print("Opção inválida! Tente novamente.")
 
     def login(self) -> bool:
         auth_service = AuthService()
@@ -21,7 +23,6 @@ class Auth:
             usuario = input("Digite seu usuário: \n")
             senha = input("Digite sua senha: \n")
             if auth_service.authenticate(usuario, senha):
-                self.logged = True
                 print("Logado com sucesso!")
                 return True
             else:
@@ -45,7 +46,6 @@ class Auth:
                 continue
             if login_service.signup(nome, usuario, senha):
                 print("Cadastro realizado com sucesso!")
-                self.logged = True
                 return True
             else:
                 print("Usuário já cadastrado!")

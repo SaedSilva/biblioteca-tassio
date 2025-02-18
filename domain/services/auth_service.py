@@ -1,11 +1,11 @@
 import hashlib
 
-from domain.entities.user import User
-from domain.repositories.user_repository import UserRepository
+from domain.entities.employee import Employee
+from domain.repositories.employee_repository import EmployeeRepository
 
 
 class AuthService:
-    def __init__(self, user_repository: UserRepository = UserRepository()):
+    def __init__(self, user_repository: EmployeeRepository = EmployeeRepository()):
         self.user_repository = user_repository
 
     def authenticate(self, username: str, password: str) -> bool:
@@ -21,7 +21,7 @@ class AuthService:
             return False
         if self.user_repository.find_by_username(username):
             return False
-        self.user_repository.insert(User(None, name, username.lower(), self._hash_password(password)))
+        self.user_repository.insert(Employee(None, name, username.lower(), self._hash_password(password)))
         return True
 
     def _hash_password(self, password: str) -> str:
