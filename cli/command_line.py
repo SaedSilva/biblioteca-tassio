@@ -1,4 +1,6 @@
 from cli.auth import Auth
+from cli.library import Library
+from domain.entities.book import Book
 from domain.repositories.book_repository import BookRepository
 from domain.repositories.customer_repository import CustomerRepository
 from domain.repositories.employee_repository import EmployeeRepository
@@ -22,9 +24,16 @@ class CommandLine:
             book_repository = BookRepository(sqlite_helper)
             book_service = BookService(book_repository)
 
+            library_cli = Library(book_service)
+
             print("Bem vindo ao Tassio Libraries\n")
             while True:
                 opcao: str = self.input_opcao()
+                if opcao == "1":
+                    library_cli.start()
+                elif opcao == "4":
+                    break
+
 
         print("Programa finalizado!")
 
