@@ -19,7 +19,6 @@ class EmployeeCli:
                 password = input("Digite a senha do funcionario: ")
                 self.auth_service.signup(name, username, password)
                 print("Funcionario cadastrado com sucesso!\n")
-                enter_input()
 
             elif opcao == "2":
                 id = int(input("Digite o id do funcionario: "))
@@ -28,28 +27,26 @@ class EmployeeCli:
                 password = input("Digite a senha do funcionario: ")
                 self.auth_service.update(id, name, username, password)
                 print("Funcionario atualizado com sucesso!\n")
-                enter_input()
 
             elif opcao == "3":
                 id = int(input("Digite o id do funcionario: "))
                 self.employee_service.delete(id)
                 print("Funcionario deletado com sucesso!\n")
-                enter_input()
 
             elif opcao == "4":
                 funcionarios = self.employee_service.find_all()
                 if len(funcionarios) == 0:
                     print("Nenhum funcionario encontrado!\n")
-                    enter_input()
                 else:
                     print("Funcionarios encontrados:")
                     print(Employee.header())
                     for funcionario in funcionarios:
                         print(funcionario)
-                    enter_input()
 
             elif opcao == "5":
                 break
+
+        enter_input()
 
     def input_opcao(self) -> str:
         while True:

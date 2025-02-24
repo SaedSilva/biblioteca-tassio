@@ -12,4 +12,4 @@ class CustomerBookProjection:
 
     @staticmethod
     def header():
-        return f'{"ID":<5} {"Title":<50} {"Description":<60} {"Author":<30} {"Price":<10} {"Category":<30} {"Rented by":<30} {"CPF":<15} {"Customer name":<30}'
+        return f'{"ID":<5} {"Title":<50} {"Description":<60} {"Author":<30} {"Price":<10} {"Category":<30} {"CPF":<15} {"Customer name":<30}'

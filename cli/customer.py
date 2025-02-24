@@ -16,13 +16,11 @@ class CustomerCli:
                 nome = input("Digite o nome do cliente: ")
                 self.customer_service.insert(cpf, nome)
                 print("Cliente cadastrado com sucesso!")
-                enter_input()
 
             elif opcao == "2":
                 cpf = input("Digite o CPF do cliente: ")
                 self.customer_service.delete(cpf)
                 print("Cliente removido com sucesso!")
-                enter_input()
 
             elif opcao == "3":
                 old_cpf = input("Digite o CPF antigo do cliente: ")
@@ -30,22 +28,21 @@ class CustomerCli:
                 nome = input("Digite o nome do cliente: ")
                 self.customer_service.update(old_cpf, cpf, nome)
                 print("Cliente atualizado com sucesso!")
-                enter_input()
 
             elif opcao == "4":
                 clientes = self.customer_service.find_all()
                 if len(clientes) == 0:
                     print("Nenhum cliente encontrado!\n")
-                    enter_input()
                 else:
                     print("Clientes encontrados:")
                     print(Customer.header())
                     for cliente in clientes:
                         print(cliente)
-                    enter_input()
 
             elif opcao == "5":
                 break
+
+        enter_input()
 
     def input_opcao(self) -> str:
         while True:
