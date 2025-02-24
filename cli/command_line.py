@@ -1,4 +1,6 @@
 from cli.auth import Auth
+from cli.customer import CustomerCli
+from cli.employee import EmployeeCli
 from cli.library import Library
 from domain.entities.book import Book
 from domain.repositories.book_repository import BookRepository
@@ -8,6 +10,7 @@ from domain.repositories.sqlite_helper import SQLiteHelper
 from domain.services.auth_service import AuthService
 from domain.services.book_service import BookService
 from domain.services.customer_service import CustomerService
+from domain.services.employee_service import EmployeeService
 
 
 class CommandLine:
@@ -23,14 +26,21 @@ class CommandLine:
 
             book_repository = BookRepository(sqlite_helper)
             book_service = BookService(book_repository)
+            employee_service = EmployeeService(employee_repository)
 
             library_cli = Library(book_service)
+            customer_cli = CustomerCli(customer_service)
+            employee_cli = EmployeeCli(employee_service, auth_service)
 
             print("Bem vindo ao Tassio Libraries\n")
             while True:
                 opcao: str = self.input_opcao()
                 if opcao == "1":
                     library_cli.start()
+                elif opcao == "2":
+                    customer_cli.start()
+                elif opcao == "3":
+                    employee_cli.start()
                 elif opcao == "4":
                     break
 

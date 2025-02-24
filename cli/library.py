@@ -20,6 +20,7 @@ class Library:
                 livros = self._service.search_by_title(titulo)
                 if len(livros) == 0:
                     print("Nenhum livro encontrado com esse titulo!\n")
+                    enter_input()
                 else:
                     print("Livros encontrados:")
                     print(Book.header())
@@ -32,6 +33,7 @@ class Library:
                 livros = self._service.search_by_category(categoria)
                 if len(livros) == 0:
                     print("Nenhum livro encontrado com essa categoria!\n")
+                    enter_input()
                 else:
                     print("Livros encontrados:")
                     print(Book.header())
@@ -44,6 +46,7 @@ class Library:
                 livros = self._service.search_by_author(autor)
                 if len(livros) == 0:
                     print("Nenhum livro encontrado com esse autor!\n")
+                    enter_input()
                 else:
                     print("Livros encontrados:")
                     print(Book.header())
@@ -55,6 +58,7 @@ class Library:
                 livros = self._service.find_all()
                 if len(livros) == 0:
                     print("Nenhum livro encontrado!\n")
+                    enter_input()
                 else:
                     print("Livros encontrados:")
                     print(Book.header())
@@ -66,6 +70,7 @@ class Library:
                 livros = self._service.find_all_not_rented()
                 if len(livros) == 0:
                     print("Nenhum livro nao alugado encontrado!\n")
+                    enter_input()
                 else:
                     print("Livros encontrados:")
                     print(Book.header())
@@ -77,6 +82,7 @@ class Library:
                 livros: List[CustomerBookProjection] = self._service.find_all_rented()
                 if len(livros) == 0:
                     print("Nenhum livro alugado encontrado!\n")
+                    enter_input()
                 else:
                     print("Livros encontrados:")
                     print(CustomerBookProjection.header())

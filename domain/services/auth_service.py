@@ -24,6 +24,22 @@ class AuthService:
         self.user_repository.insert(Employee(None, name, username.lower(), self._hash_password(password)))
         return True
 
+    def update(self, id: int, name: str, username: str, password: str) -> bool:
+        if len(name) < 3:
+            return False
+        if len(username) < 3:
+            return False
+        if len(password) < 3:
+            return False
+        user = self.user_repository.find_by_id(id)
+        if not user:
+            return False
+        user.name = name
+        user.username = username.lower()
+        user.password = self._hash_password(password)
+        self.user_repository.update(user)
+        return True
+
     def _hash_password(self, password: str) -> str:
         hash_object = hashlib.sha256()
         hash_object.update(password.encode())

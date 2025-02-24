@@ -23,16 +23,16 @@ class CustomerRepository:
         )
         self.sqlite_helper.conn.commit()
 
-    def update(self, entity: Customer):
+    def update(self, cpf: str, entity: Customer):
         self.sqlite_helper.conn.execute(
-            'UPDATE employees SET cpf = ?, name = ?',
-            (entity.cpf, entity.name)
+            'UPDATE customers SET cpf = ?, name = ? WHERE cpf = ?',
+            (entity.cpf, entity.name, cpf)
         )
         self.sqlite_helper.conn.commit()
 
     def delete(self, entity: Customer):
         self.sqlite_helper.conn.execute(
-            'DELETE FROM employees WHERE cpf = ?',
+            'DELETE FROM customers WHERE cpf = ?',
             (entity.cpf,)
         )
         self.sqlite_helper.conn.commit()
