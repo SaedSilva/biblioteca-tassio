@@ -1,4 +1,7 @@
+from typing import List
+
 from domain.entities.book import Book
+from domain.projections.book_customer import CustomerBookProjection
 from domain.services.book_service import BookService
 from utils.utils import enter_input
 
@@ -71,12 +74,12 @@ class Library:
                     enter_input()
 
             elif opcao == "6":
-                livros = self._service.find_all_rented()
+                livros: List[CustomerBookProjection] = self._service.find_all_rented()
                 if len(livros) == 0:
                     print("Nenhum livro alugado encontrado!\n")
                 else:
                     print("Livros encontrados:")
-                    print(Book.header())
+                    print(CustomerBookProjection.header())
                     for livro in livros:
                         print(livro)
                     enter_input()
