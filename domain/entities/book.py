@@ -10,11 +10,11 @@ class Book:
 
     def __str__(self):
         rented_by = self.rented_by if self.rented_by else ''
-        return f'{self.id:<5} {self.title:<30} {self.description:<30} {self.author:<30} {self.price:<10} {self.category:<30} {rented_by:<30}'
+        return f'{self.id:<5} {self.title:<50} {self.description:<60} {self.author:<30} {self.price:<10} {self.category:<30} {rented_by:<30}'
 
     @staticmethod
     def header():
-        return f'{"ID":<5} {"Title":<30} {"Description":<30} {"Author":<30} {"Price":<10} {"Category":<30} {"Rented by":<30}'
+        return f'{"ID":<5} {"Title":<50} {"Description":<60} {"Author":<30} {"Price":<10} {"Category":<30} {"Rented by":<30}'
 
 
 
