@@ -54,3 +54,12 @@ class BookService:
     def return_book(self, book_id: int):
         self._repository.return_book(book_id)
 
+    def books_category(self):
+        return self._repository.books_category()
+
+    def books_categories_most_rented(self):
+        return self._repository.categories_most_rented()
+
+    def books_rented_not_rented(self):
+        return self._repository.books_rented_and_not_rented()
+

@@ -14,7 +14,7 @@ O sistema deve ser desenvolvido em Python e conter:
 - [X] Cadastro de dados (por exemplo, clientes, produtos, alunos, funcionários).
 - [X] Movimentação ou atualização associada ao cadastro (exemplo: pagamentos, vendas, notas, consultas).
 - [X] Menu interativo para acessar as opções do sistema.
-- [ ] Geração de um gráfico utilizando Matplotlib, apresentando estatísticas sobre os dados cadastrados.
+- [X] Geração de um gráfico utilizando Matplotlib, apresentando estatísticas sobre os dados cadastrados.
 - [X] Código organizado e modularizado (separação em funções).
 
 ##### Bônus (Opcional)

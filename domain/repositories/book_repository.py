@@ -4,6 +4,8 @@ from domain.entities.book import Book
 from domain.entities.customer import Customer
 from domain.entities.employee import Employee
 from domain.projections.book_customer import CustomerBookProjection
+from domain.projections.category_quantity import CategoryQuantityProjection
+from domain.projections.rented_not_rented import RentedNotRentedProjection
 from domain.repositories.sqlite_helper import SQLiteHelper
 
 
@@ -107,3 +109,37 @@ class BookRepository:
             (book_id,)
         )
         self._sqlite_helper.conn.commit()
+
+    def books_category(self) -> list[CategoryQuantityProjection]:
+        cursor = self._sqlite_helper.conn.execute('''
+            SELECT category, COUNT(category) AS quantity
+            FROM books
+            GROUP BY category;
+        ''')
+        entities: list[CategoryQuantityProjection] = []
+        for row in cursor:
+            entities.append(CategoryQuantityProjection(row[0], row[1]))
+        return entities
+
+    def categories_most_rented(self) -> list[CategoryQuantityProjection]:
+        cursor = self._sqlite_helper.conn.execute('''
+            SELECT category, COUNT(category) AS quantity
+            FROM books
+            WHERE rented_by IS NOT NULL
+            GROUP BY category
+            ORDER BY quantity DESC
+            LIMIT 3;
+        ''')
+        entities: list[CategoryQuantityProjection] = []
+        for row in cursor:
+            entities.append(CategoryQuantityProjection(row[0], row[1]))
+        return entities
+
+    def books_rented_and_not_rented(self) -> RentedNotRentedProjection:
+        cursor = self._sqlite_helper.conn.execute('''
+            SELECT COUNT(*) AS rented, (SELECT COUNT(*) FROM books WHERE rented_by IS NULL) AS not_rented
+            FROM books
+            WHERE rented_by IS NOT NULL;
+        ''')
+        row = cursor.fetchone()
+        return RentedNotRentedProjection(row[0], row[1])

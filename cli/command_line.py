@@ -1,4 +1,5 @@
 from cli.auth import Auth
+from cli.chart import Chart
 from cli.customer import CustomerCli
 from cli.employee import EmployeeCli
 from cli.library import Library
@@ -31,6 +32,7 @@ class CommandLine:
             library_cli = Library(book_service)
             customer_cli = CustomerCli(customer_service)
             employee_cli = EmployeeCli(employee_service, auth_service)
+            chart_cli = Chart(book_service)
 
             print("Bem vindo ao Tassio Libraries\n")
             while True:
@@ -42,6 +44,9 @@ class CommandLine:
                 elif opcao == "3":
                     employee_cli.start()
                 elif opcao == "4":
+                    chart_cli.start()
+
+                elif opcao == "5":
                     break
 
 
@@ -53,11 +58,12 @@ class CommandLine:
             print("1 - Livros")
             print("2 - Clientes")
             print("3 - Funcionarios")
+            print("4 - Graficos")
 
-            print("4 - Sair\n")
+            print("5 - Sair\n")
             opcao = input()
 
-            if opcao in ('1', '2', '3', '4'):
+            if opcao in ('1', '2', '3', '4', '5'):
                 return opcao
             else:
                 print("Opcao invalida!")
