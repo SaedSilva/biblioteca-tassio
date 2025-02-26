@@ -24,10 +24,10 @@ O sistema deve ser desenvolvido em Python e conter:
 
 ### 3. Documentação do Sistema (Artigo Técnico – 50%)
 
-- [ ] Cada grupo deverá produzir um artigo técnico sobre o sistema desenvolvido, contendo:
-- [ ] Introdução – Apresentação do problema e do sistema proposto.
-- [ ] Objetivos – O que o sistema se propõe a resolver.
-- [ ] Metodologia – Como foi desenvolvido, incluindo tecnologias e linguagens usadas.
-- [ ] Requisitos Funcionais e Não Funcionais – Lista detalhada dos requisitos do sistema.
-- [ ] Diagramas UML (mínimo 2 tipos) – O grupo deve escolher pelo menos dois dos diagramas.
-- [ ] Resultados e Conclusão – Apresentação do funcionamento do sistema e considerações finais.
+- [X] Cada grupo deverá produzir um artigo técnico sobre o sistema desenvolvido, contendo:
+- [X] Introdução – Apresentação do problema e do sistema proposto.
+- [X] Objetivos – O que o sistema se propõe a resolver.
+- [X] Metodologia – Como foi desenvolvido, incluindo tecnologias e linguagens usadas.
+- [X] Requisitos Funcionais e Não Funcionais – Lista detalhada dos requisitos do sistema.
+- [X] Diagramas UML (mínimo 2 tipos) – O grupo deve escolher pelo menos dois dos diagramas.
+- [X] Resultados e Conclusão – Apresentação do funcionamento do sistema e considerações finais.
